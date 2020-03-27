@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,700&display=swap");
+
+:root {
+  --color-bg: #0A0A0A;
+  --color-primary: white;
+  --color-secondary: #3D3D3D;
+
+  --default-transition: ease-in-out 0.3s;
+  --global-side-margin: 80px;
+
+  --carousel-card-w: 290px;
+  --carousel-card-w-expanded: 743px;
+  --carousel-card-h: 418px;
+}
+
+html,
+body {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+header {
+  margin: 0 auto;
+  padding: 53px var(--global-side-margin);
+}
+
+main {
+  margin: 0 auto;
+}
