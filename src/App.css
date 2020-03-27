@@ -40,7 +40,9 @@ a:visited {
 
 header {
   margin: 0 auto;
-  padding: 53px var(--global-side-margin);
+  padding-top: 53px;
+  padding-left: var(--global-side-margin);
+  padding-right: var(--global-side-margin);
 }
 
 main {

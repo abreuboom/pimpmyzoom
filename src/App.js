@@ -3,6 +3,7 @@ import "./App.css";
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Carousel from "./components/Carousel";
+import HeaderTitle from "./components/HeaderTitle";
 import NavBar from "./components/NavBar";
 import React from "react";
 import Upload from "./components/Upload";
@@ -21,6 +22,7 @@ function App() {
             <Upload />
           </Route>
           <Route path='/'>
+            <HeaderTitle />
             <Carousel />
           </Route>
         </Switch>

@@ -20,33 +20,33 @@ export default function Carousel() {
     setExpandedItem(!expandedItem);
   }
 
-  // useEffect(() => {
-  //   const fetchFeatured = ref.once(
-  //     "value",
-  //     snapshot => {
-  //       const newStore = [];
+  useEffect(() => {
+    const fetchFeatured = ref.once(
+      "value",
+      snapshot => {
+        const newStore = [];
 
-  //       snapshot.forEach(child => {
-  //         var dict = child.val();
-  //         var obj = {
-  //           title: dict.title,
-  //           author: dict.author,
-  //           src: dict.src
-  //         };
+        snapshot.forEach(child => {
+          var dict = child.val();
+          var obj = {
+            title: dict.title,
+            author: dict.author,
+            src: dict.src
+          };
 
-  //         newStore.push(obj);
-  //       });
+          newStore.push(obj);
+        });
 
-  //       console.log(newStore);
+        console.log(newStore);
 
-  //       setStore(newStore);
-  //     },
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   );
-  //   return () => fetchFeatured;
-  // });
+        setStore(newStore);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    return () => fetchFeatured;
+  });
 
   return (
     <div
