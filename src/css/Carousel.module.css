@@ -1,69 +1,68 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    overflow: scroll;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow: scroll;
+  width: 100%;
 }
 
 .item {
-    display: flex;
-    position: relative;
-    width: var(--carousel-card-w);
-    margin-right: 40px;
-    overflow: hidden;
+  display: flex;
+  position: relative;
+  width: var(--carousel-card-w);
+  margin-right: 40px;
+  overflow: hidden;
 
-    flex-shrink: 0;
-    flex-direction: column;
-    align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
 
-    transition: var(--default-transition);
+  transition: var(--default-transition);
 }
 
 .item:first-child {
-    margin-left: 80px;
+  margin-left: 80px;
 }
 
 .imgContainer {
-    height: var(--carousel-card-h);
+  height: var(--carousel-card-h);
+  overflow: hidden;
 }
 
-.container:hover>.item {
-    opacity: 0.5;
-    transition: var(--default-transition);
+.container:hover > .item {
+  opacity: 0.5;
+  transition: var(--default-transition);
 }
 
-.container:hover>.item:hover {
-    opacity: 1;
-    transition: var(--default-transition);
+.container:hover > .item:hover {
+  opacity: 1;
+  transition: var(--default-transition);
 }
 
 .expanded {
-    width: var(--carousel-card-w-expanded);
+  width: var(--carousel-card-w-expanded);
 }
 
-.expandActive> :not(.expanded) {
-    flex-shrink: 1;
-    transition: var(--default-transition);
-
+.expandActive > :not(.expanded) {
+  flex-shrink: 1;
 }
 
-.expandActive> :not(.expanded) .desc {
-    opacity: 0;
-    transition: var(--default-transition);
+.expandActive > :not(.expanded) .desc {
+  opacity: 0;
 }
 
 .thumbnail {
-    height: var(--carousel-card-h);
+  width: var(--carousel-card-w-expanded);
+  object-fit: cover;
 }
 
 .desc {
-    width: 100%;
-    margin-top: 24px;
-    transition: var(--default-transition);
+  width: 100%;
+  margin-top: 24px;
+  transition: var(--default-transition);
 }
 
 .author {
-    margin-top: 8px;
-    color: var(--color-secondary);
+  margin-top: 8px;
+  color: var(--color-secondary);
 }

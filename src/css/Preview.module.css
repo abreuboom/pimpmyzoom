@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 64px 80px;
+}
+
+.item {
+  position: relative;
+  width: 600px;
+  height: 338px;
+  border: solid gray;
+  flex-shrink: 0;
+  background-color: red;
+}
+
+.item img {
+  width: 100%;
+}
+
+.item video,
+.item canvas {
+  margin: 0 auto;
+  /* width: 600px; */
+  height: 338px;
+}

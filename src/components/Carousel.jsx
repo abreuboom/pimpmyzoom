@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import CarouselCard from "./CarouselCard";
 import css from "../css/Carousel.module.css";
-import publicUrl from "../utils/publicUrl";
 import { ref } from "../utils/Firebase";
 
 const initialStore = Array(6).fill({
   title: "title",
   author: "author",
-  src: publicUrl("assets/placeholder_bg.png")
+  src: require("../assets/placeholder_bg.png")
 });
 
 export default function Carousel() {
@@ -36,8 +35,6 @@ export default function Carousel() {
 
           newStore.push(obj);
         });
-
-        console.log(newStore);
 
         setStore(newStore);
       },
