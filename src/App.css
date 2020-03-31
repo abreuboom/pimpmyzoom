@@ -32,6 +32,10 @@ p {
   padding: 0;
 }
 
+video {
+  display: none;
+}
+
 a,
 a:visited {
   text-decoration: none;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// import Preview from "./Preview";
 import css from "../css/Carousel.module.css";
 
 export default function CarouselCard(props) {
@@ -16,6 +17,7 @@ export default function CarouselCard(props) {
       className={[css.item, expanded ? css.expanded : ""].join(" ")}
       onClick={toggleExpanded}>
       <div className={css.imgContainer}>
+        {/* {expanded && <Preview />} */}
         <img src={store.src} alt='' className={css.thumbnail} />
       </div>
       <div className={css.desc}>

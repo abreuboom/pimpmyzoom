@@ -66,3 +66,7 @@
   margin-top: 8px;
   color: var(--color-secondary);
 }
+
+canvas {
+  position: absolute;
+}

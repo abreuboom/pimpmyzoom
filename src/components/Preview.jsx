@@ -4,10 +4,9 @@ import css from "../css/Preview.module.css";
 
 const bodyPix = require("@tensorflow-models/body-pix");
 
-export default function Preview() {
+export default function Preview(props) {
   const [video] = useState(React.createRef());
   const [canvas] = useState(React.createRef());
-  const [bgCanvas] = useState(React.createRef());
 
   const videoError = error => {
     console.log("error", error);
@@ -54,15 +53,37 @@ export default function Preview() {
       const flipHorizontal = false;
 
       // draw the mask onto the image on a canvas.  With opacity set to 0.7 this will darken the background.
-      bodyPix.drawMask(
-        canvas.current,
-        image,
-        backgroundDarkeningMask,
-        opacity,
-        maskBlurAmount,
-        flipHorizontal
-      );
+      //   bodyPix.drawMask(
+      //     canvas.current,
+      //     image,
+      //     backgroundDarkeningMask,
+      //     opacity,
+      //     maskBlurAmount,
+      //     flipHorizontal
+      //   );
+
+      drawBody(segmentation);
     }
+  }
+
+  function drawBody(personSegmentation) {
+    let contextPerson = canvas.current.getContext("2d");
+    const camera = video.current;
+    contextPerson.drawImage(camera, 0, 0, camera.width, camera.height);
+    var imageData = contextPerson.getImageData(
+      0,
+      0,
+      camera.width,
+      camera.height
+    );
+    var pixel = imageData.data;
+    for (var p = 0; p < pixel.length; p += 4) {
+      if (personSegmentation.data[p / 4] === 0) {
+        pixel[p + 3] = 0;
+      }
+    }
+    contextPerson.imageSmoothingEnabled = true;
+    contextPerson.putImageData(imageData, 0, 0);
   }
 
   useEffect(() => {
@@ -78,34 +99,20 @@ export default function Preview() {
   });
 
   return (
-    <div className={css.container}>
-      <div className={css.item}>
-        <img src={require("../assets/placeholder_bg.png")} alt='' />
-      </div>
+    <>
+      <video
+        autoPlay={true}
+        ref={video}
+        id='videoElement'
+        width='640px'
+        height='480px'
+        onLoadedData={cropTheDude}></video>
 
-      <div className={css.item}>
-        <video
-          autoPlay={true}
-          ref={video}
-          id='videoElement'
-          width='640px'
-          height='480px'
-          onLoadedData={cropTheDude}></video>
-      </div>
-
-      <div className={css.item}>
-        <canvas
-          ref={canvas}
-          id='canvasElement'
-          width='640px'
-          height='480px'></canvas>
-        <canvas
-          ref={bgCanvas}
-          className={css.c}
-          width='640px'
-          height='480px'></canvas>
-      </div>
-      <div className={css.item}></div>
-    </div>
+      <canvas
+        ref={canvas}
+        id='canvasElement'
+        width='640px'
+        height='480px'></canvas>
+    </>
   );
 }

@@ -3,10 +3,12 @@ import "./App.css";
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Carousel from "./components/Carousel";
+import FullscreenModal from "./components/FullscreenModal";
 import HeaderTitle from "./components/HeaderTitle";
 import NavBar from "./components/NavBar";
 import Preview from "./components/Preview";
 import React from "react";
+import StoreContextProvider from "./utils/context";
 import Upload from "./components/Upload";
 
 function App() {
@@ -16,24 +18,30 @@ function App() {
         <NavBar />
       </header>
 
-      <main>
-        <Switch>
-          <Route path='/why'></Route>
+      <StoreContextProvider>
+        <main>
+          <Switch>
+            <Route path='/why'></Route>
 
-          <Route path='/upload'>
-            <Upload />
-          </Route>
+            <Route path='/upload'>
+              <Upload />
+            </Route>
 
-          <Route path='/beta'>
-            <Preview />
-          </Route>
+            <Route path='/beta'>
+              <Preview />
+            </Route>
 
-          <Route path='/'>
-            <HeaderTitle />
-            <Carousel />
-          </Route>
-        </Switch>
-      </main>
+            <Route path='try/:id?'>
+              <FullscreenModal />
+            </Route>
+
+            <Route path='/'>
+              <HeaderTitle />
+              <Carousel />
+            </Route>
+          </Switch>
+        </main>
+      </StoreContextProvider>
 
       <footer>
         <Link to='/upload'>UPLOAD</Link>
